@@ -6,6 +6,9 @@ import dotenv from "dotenv";
 //get the config from .env file
 dotenv.config();
 
+//routers imports
+import userRouter from "./routes/users_routes.js";
+
 let app = express();
 
 //json middleware
@@ -21,6 +24,8 @@ app.use(express.static("./public"));
 app.get("/", function (req, res) {
   res.send("Hellow world");
 });
+
+app.use("/users", userRouter);
 
 app.listen(process.env.PORT, function () {
   console.log(`Server running on port ${process.env.PORT}`);
